@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.back_springboot.mapper.EmployeeMapper">
+    <select id="selectAll" resultType="com.example.back_springboot.entity.Employee"><!-- 这里要与对应mapper中的方法相对应-->
+        SELECT * FROM employee
+    </select>
+
+    <select id="selectID"><!-- 这里要与对应mapper中的方法相对应-->
+        SELECT id FROM employee
+    </select>
+
+    <insert id="insert" parameterType="com.example.back_springboot.entity.Employee"> <!--一定注意在如下语句中什么时候使用下划线，什么时候使用驼峰-->
+        insert into `employee` (id,name, sex, no, age, description, department_id)
+        values (#{id},#{name},#{sex},#{no},#{age},#{description},#{departmentId})
+    </insert>
+
+</mapper>
+
+        <!--以下是xml的模板，模板要在所有文档之前，在com.example文件夹下的mapper中实现方法-->
+        <!--<?xml version="1.0" encoding="UTF-8"?>-->
+        <!--<!DOCTYPE mapper-->
+        <!--        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"-->
+        <!--        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
+        <!--<mapper namespace="">这里namespace是对应接口文件的路径-->
+        <!--</mapper>-->
+
